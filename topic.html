@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Voice — Topic Reader</title>
+  <meta name="description" content="School Voice — Detailed academic notes, worked examples and student activities. © BaileAndrea." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .content-blur {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .read-progress {
+      position: fixed;
+      top: var(--header-h);
+      left: var(--sidebar-w);
+      right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      z-index: 500;
+    }
+    .read-progress-fill {
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    @media (max-width: 900px) {
+      .read-progress { left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="watermark">© BaileAndrea · School Voice</div>
+
+<div class="read-progress">
+  <div class="read-progress-fill" id="read-progress-fill"></div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <button class="hamburger" onclick="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="logo" href="index.html">
+    <div class="logo-mark">SV</div>
+    <div class="logo-text">School <span>Voice</span></div>
+  </a>
+  <nav class="header-nav" id="header-nav">
+    <button class="nav-btn nav-ghost" onclick="window.location.href='index.html'">Home</button>
+    <button class="nav-btn nav-ghost">About</button>
+    <button class="nav-btn nav-outline" onclick="openModal('login')">Sign In</button>
+    <button class="nav-btn nav-fill"    onclick="openModal('register')">Get Started</button>
+  </nav>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+  <div class="sb-section open" id="sec-gs">
+    <div class="sb-header" onclick="toggleSection('sec-gs')">
+      <div class="sb-icon" style="background:rgba(30,77,140,0.2)">📚</div>
+      <span class="sb-label">Grade School</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+      <div class="sb-group"><span class="sb-group-label">Grades 1 – 6</span></div>
+      <div class="sb-item active" onclick="loadSubject('g1-math')"><div class="sb-item-name">Grade 1 · Mathematics</div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 2 Mathematics')"><div class="sb-item-name">Grade 2 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 3 Mathematics')"><div class="sb-item-name">Grade 3 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 4 Mathematics')"><div class="sb-item-name">Grade 4 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 5 Mathematics')"><div class="sb-item-name">Grade 5 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 6 Mathematics')"><div class="sb-item-name">Grade 6 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-group"><span class="sb-group-label">Grades 7 – 12</span></div>
+      <div class="sb-item coming" onclick="goCS('Grade 7 Mathematics')"><div class="sb-item-name">Grade 7 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 8 Mathematics')"><div class="sb-item-name">Grade 8 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 9 Mathematics')"><div class="sb-item-name">Grade 9 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 10 Mathematics')"><div class="sb-item-name">Grade 10 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 11 Mathematics')"><div class="sb-item-name">Grade 11 · Mathematics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Grade 12 Mathematics')"><div class="sb-item-name">Grade 12 · Mathematics <span class="cs-pill">SOON</span></div></div>
+    </div>
+  </div>
+
+  <div class="sb-section" id="sec-sci">
+    <div class="sb-header" onclick="toggleSection('sec-sci')">
+      <div class="sb-icon" style="background:rgba(26,122,74,0.2)">🔬</div>
+      <span class="sb-label">Sciences</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+      <div class="sb-group"><span class="sb-group-label">Physics</span></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 9')"><div class="sb-item-name">Grade 9 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 10')"><div class="sb-item-name">Grade 10 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 11')"><div class="sb-item-name">Grade 11 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 12')"><div class="sb-item-name">Grade 12 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-group"><span class="sb-group-label">Chemistry</span></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 9')"><div class="sb-item-name">Grade 9 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 10')"><div class="sb-item-name">Grade 10 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 11')"><div class="sb-item-name">Grade 11 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 12')"><div class="sb-item-name">Grade 12 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-group"><span class="sb-group-label">Biology</span></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 9')"><div class="sb-item-name">Grade 9 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 10')"><div class="sb-item-name">Grade 10 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 11')"><div class="sb-item-name">Grade 11 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 12')"><div class="sb-item-name">Grade 12 · Biology <span class="cs-pill">SOON</span></div></div>
+    </div>
+  </div>
+
+  <div class="sb-section" id="sec-uni">
+    <div class="sb-header" onclick="toggleSection('sec-uni')">
+      <div class="sb-icon" style="background:rgba(201,168,76,0.2)">🎓</div>
+      <span class="sb-label">University</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+      <div class="sb-group"><span class="sb-group-label">Calculus</span></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 101')"><div class="sb-item-name">Calculus 101 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 102')"><div class="sb-item-name">Calculus 102 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 103')"><div class="sb-item-name">Calculus 103 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 104')"><div class="sb-item-name">Calculus 104 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-group"><span class="sb-group-label">Algebra</span></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 101')"><div class="sb-item-name">Algebra 101 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 102')"><div class="sb-item-name">Algebra 102 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 103')"><div class="sb-item-name">Algebra 103 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 104')"><div class="sb-item-name">Algebra 104 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-group"><span class="sb-group-label">Advanced</span></div>
+      <div class="sb-item coming" onclick="goCS('Probability and Statistics')"><div class="sb-item-name">Probability &amp; Statistics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Stochastics')"><div class="sb-item-name">Stochastics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Complex Analysis')"><div class="sb-item-name">Complex Analysis <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Geometry')"><div class="sb-item-name">Geometry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Hypothesis Testing')"><div class="sb-item-name">Hypothesis Testing <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Basic Mathematics')"><div class="sb-item-name">Basic Mathematics <span class="cs-pill">SOON</span></div></div>
+    </div>
+  </div>
+
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="topic-header">
+    <div class="breadcrumb" id="breadcrumb">
+      <span class="bc-item" onclick="window.location.href='index.html'">Home</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-item" id="bc-section">Grade School</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-item" id="bc-grade">Grade 1</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-item" id="bc-subject">Mathematics</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-item bc-current" id="bc-topic">Loading...</span>
+    </div>
+    <h1 class="topic-h1" id="topic-h1">Loading...</h1>
+    <div class="t-meta" id="t-meta">
+      <span class="t-tag tag-g" id="meta-grade">Grade 1</span>
+      <span class="t-tag tag-s" id="meta-subject">Mathematics</span>
+      <span class="t-tag tag-t" id="meta-time">⏱ 40 min read</span>
+      <span class="t-tag tag-l" id="meta-lock" style="display:none">🔒 Login required</span>
+    </div>
+  </div>
+
+  <div class="topic-layout">
+    <div class="tlist" id="tlist">
+      <div class="tlist-title">Topics in this subject</div>
+    </div>
+    <div class="content-area" id="content-area">
+      <div class="content-body">
+        <p style="color:var(--muted);font-style:italic">Loading content...</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-copy">
+      © 2025 <strong>BaileAndrea</strong> · School Voice · All Rights Reserved ·
+      Unauthorized copying, reproduction or printing is strictly prohibited.
+    </div>
+    <div class="footer-links">
+      <span class="footer-link">Terms of Use</span>
+      <span class="footer-link">Copyright Notice</span>
+    </div>
+  </footer>
+
+</main>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">
+      <div class="modal-lmark">SV</div>
+      <div class="modal-ltext">School Voice</div>
+    </div>
+    <div id="m-login">
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to access all notes, examples and activities.</p>
+      <div class="field"><label>Email Address</label><input type="email" placeholder="you@example.com" /></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="••••••••" /></div>
+      <button class="btn-primary" onclick="handleLogin()">Sign In &amp; Continue</button>
+      <div class="divider" style="margin-top:18px">or</div>
+      <div class="modal-switch">No account? <a onclick="switchModal('register')">Create one free</a></div>
+    </div>
+    <div id="m-register" style="display:none">
+      <h2>Get started free</h2>
+      <p class="sub">Create your account to unlock the full School Voice library.</p>
+      <div class="field"><label>Full Name</label><input type="text" placeholder="Your full name" /></div>
+      <div class="field"><label>Email Address</label><input type="email" placeholder="you@example.com" /></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="Create a password" /></div>
+      <button class="btn-primary" onclick="handleLogin()">Create Account</button>
+      <div class="divider" style="margin-top:18px">or</div>
+      <div class="modal-switch">Already have an account? <a onclick="switchModal('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="protection.js"></script>
+<script src="auth.js"></script>
+<script src="sidebar.js"></script>
+<script src="content/g1-math.js"></script>
+
+<script>
+/* ══════════════════════════════════
+   TOPIC PAGE ENGINE
+══════════════════════════════════ */
+window.SUBJECTS    = window.SUBJECTS    || {};
+window.TOPIC_CONTENT = window.TOPIC_CONTENT || {};
+
+let currentSubjectKey = 'g1-math';
+let currentTopicIndex = 0;
+
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var subjectKey = getParam('subject') || 'g1-math';
+  var topicIndex = parseInt(getParam('topic') || '0', 10);
+  loadSubject(subjectKey, topicIndex);
+  initReadProgress();
+});
+
+function loadSubject(subjectKey, topicIndex) {
+  topicIndex = topicIndex || 0;
+  currentSubjectKey = subjectKey;
+  currentTopicIndex = topicIndex;
+
+  var sd = window.SUBJECTS[subjectKey];
+  if (!sd) {
+    document.getElementById('content-area').innerHTML =
+      '<div class="content-body"><h2>Subject Not Found</h2><p>No content has been registered for "' + subjectKey + '" yet.</p>'
+      + '<button class="btn-primary" onclick="window.location.href=\'index.html\'" style="margin-top:16px">Back to Home</button></div>';
+    return;
+  }
+
+  window.history.pushState({}, '', 'topic.html?subject=' + subjectKey + '&topic=' + topicIndex);
+  renderTopicList(sd, topicIndex);
+  renderTopic(sd, topicIndex);
+}
+
+function renderTopicList(sd, activeIdx) {
+  var html = '<div class="tlist-title">Topics in this subject</div>';
+  sd.topics.forEach(function (t, i) {
+    var locked      = !t.free && !isLoggedIn();
+    var activeClass = i === activeIdx ? ' active'  : '';
+    var lockClass   = locked          ? ' locked'  : '';
+    var lockIcon    = locked          ? '<span class="lock-sm">🔒</span>' : '';
+    html += '<div class="tlist-item' + activeClass + lockClass + '" onclick="loadSubject(\'' + currentSubjectKey + '\',' + i + ')">'
+          + '<span class="t-num">' + String(i + 1).padStart(2, '0') + '</span>'
+          + '<span class="t-name">' + t.title + '</span>'
+          + lockIcon + '</div>';
+  });
+  document.getElementById('tlist').innerHTML = html;
+}
+
+function renderTopic(sd, idx) {
+  var topic  = sd.topics[idx];
+  var locked = !topic.free && !isLoggedIn();
+
+  document.getElementById('bc-section').textContent  = sd.section;
+  document.getElementById('bc-grade').textContent    = sd.grade;
+  document.getElementById('bc-subject').textContent  = sd.subject;
+  document.getElementById('bc-topic').textContent    = topic.title;
+  document.title = topic.title + ' — School Voice';
+  document.getElementById('topic-h1').textContent    = topic.title;
+  document.getElementById('meta-grade').textContent  = sd.grade;
+  document.getElementById('meta-subject').textContent = sd.subject;
+  document.getElementById('meta-time').textContent   = '⏱ ' + (sd.readTime || '40 min read');
+  document.getElementById('meta-lock').style.display = locked ? 'inline-block' : 'none';
+
+  var ca = document.getElementById('content-area');
+
+  if (locked) {
+    var preview = (window.TOPIC_CONTENT[topic.title] && window.TOPIC_CONTENT[topic.title].preview)
+      ? window.TOPIC_CONTENT[topic.title].preview
+      : defaultPreview(topic.title);
+    ca.innerHTML = '<div class="content-body content-blur">' + preview + '</div>' + lockGate();
+  } else {
+    var tc = window.TOPIC_CONTENT[topic.title];
+    if (tc && tc.body) {
+      var prev = idx > 0 ? sd.topics[idx - 1] : null;
+      var next = idx < sd.topics.length - 1 ? sd.topics[idx + 1] : null;
+      ca.innerHTML = tc.body + topicNav(idx, prev, next) + copyrightLine();
+    } else {
+      ca.innerHTML = '<div class="content-body"><h2>' + topic.title + '</h2>'
+        + '<div class="def-box"><div class="def-label">Coming Soon</div>'
+        + '<p>Full notes for this topic are being prepared. Check back soon.</p></div></div>';
+    }
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function topicNav(idx, prev, next) {
+  var p = prev ? '<button class="tnav-btn" onclick="loadSubject(\'' + currentSubjectKey + '\',' + (idx-1) + ')">← ' + prev.title + '</button>' : '<span></span>';
+  var n = next ? '<button class="tnav-btn" onclick="loadSubject(\'' + currentSubjectKey + '\',' + (idx+1) + ')">' + next.title + ' →</button>' : '<span></span>';
+  return '<div class="topic-nav">' + p + n + '</div>';
+}
+
+function copyrightLine() {
+  return '<div class="copy-footer">© 2025 BaileAndrea · School Voice · All content is protected under copyright law. Reading is permitted. Copying, reproduction, distribution or printing is strictly prohibited.</div>';
+}
+
+function defaultPreview(title) {
+  return '<h2>' + title + '</h2>'
+    + '<p>This topic opens with a thorough introduction covering all key definitions and real-world connections students need before working through examples.</p>'
+    + '<p>Every concept is explained from first principles with no prior knowledge assumed. Worked examples progress from simple to challenging, with every step shown in full.</p>';
+}
+
+function lockGate() {
+  return '<div class="lock-gate"><div class="lock-card">'
+    + '<div class="lock-icon-big">🔐</div>'
+    + '<div class="lock-title">Create a Free Account to Continue</div>'
+    + '<div class="lock-desc">Sign in or register free to unlock the complete notes, all worked examples, step-by-step calculations and student activities for every topic.</div>'
+    + '<div class="lock-form">'
+    + '<input type="email" placeholder="Email address" />'
+    + '<input type="password" placeholder="Password" />'
+    + '<button class="btn-primary" onclick="handleLogin()">Sign In &amp; Continue Reading</button>'
+    + '<div class="divider">or</div>'
+    + '<div class="lock-switch">No account yet? <a onclick="openModal(\'register\')">Register free</a></div>'
+    + '</div></div></div>';
+}
+
+function initReadProgress() {
+  window.addEventListener('scroll', function () {
+    var el = document.documentElement;
+    var top = el.scrollTop || document.body.scrollTop;
+    var height = el.scrollHeight - el.clientHeight;
+    var pct = height > 0 ? (top / height) * 100 : 0;
+    var fill = document.getElementById('read-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+  });
+}
+
+function goCS(name) {
+  window.location.href = 'coming-soon.html?subject=' + encodeURIComponent(name);
+}
+</script>
+
+</body>
+</html>

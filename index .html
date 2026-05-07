@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Voice — Academic Learning Platform</title>
+  <meta name="description" content="School Voice — Comprehensive academic notes for Grade 1 to Grade 12, University Mathematics, Physics, Chemistry and Biology. © BaileAndrea." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     WATERMARK
+══════════════════════════════════════ -->
+<div class="watermark">© BaileAndrea · School Voice</div>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header class="site-header">
+  <button class="hamburger" onclick="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="logo" href="index.html">
+    <div class="logo-mark">SV</div>
+    <div class="logo-text">School <span>Voice</span></div>
+  </a>
+
+  <nav class="header-nav" id="header-nav">
+    <button class="nav-btn nav-ghost" onclick="window.location.href='index.html'">Home</button>
+    <button class="nav-btn nav-ghost">About</button>
+    <button class="nav-btn nav-outline" onclick="openModal('login')">Sign In</button>
+    <button class="nav-btn nav-fill"    onclick="openModal('register')">Get Started</button>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+
+  <!-- GRADE SCHOOL -->
+  <div class="sb-section open" id="sec-gs">
+    <div class="sb-header" onclick="toggleSection('sec-gs')">
+      <div class="sb-icon" style="background:rgba(30,77,140,0.2)">📚</div>
+      <span class="sb-label">Grade School</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+
+      <div class="sb-group"><span class="sb-group-label">Grades 1 – 6</span></div>
+      <div class="sb-item" onclick="window.location.href='topic.html?subject=g1-math'">
+        <div class="sb-item-name">Grade 1 · Mathematics</div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 2 Mathematics')">
+        <div class="sb-item-name">Grade 2 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 3 Mathematics')">
+        <div class="sb-item-name">Grade 3 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 4 Mathematics')">
+        <div class="sb-item-name">Grade 4 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 5 Mathematics')">
+        <div class="sb-item-name">Grade 5 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 6 Mathematics')">
+        <div class="sb-item-name">Grade 6 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+
+      <div class="sb-group"><span class="sb-group-label">Grades 7 – 12</span></div>
+      <div class="sb-item coming" onclick="goCS('Grade 7 Mathematics')">
+        <div class="sb-item-name">Grade 7 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 8 Mathematics')">
+        <div class="sb-item-name">Grade 8 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 9 Mathematics')">
+        <div class="sb-item-name">Grade 9 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 10 Mathematics')">
+        <div class="sb-item-name">Grade 10 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 11 Mathematics')">
+        <div class="sb-item-name">Grade 11 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+      <div class="sb-item coming" onclick="goCS('Grade 12 Mathematics')">
+        <div class="sb-item-name">Grade 12 · Mathematics <span class="cs-pill">SOON</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCIENCES -->
+  <div class="sb-section" id="sec-sci">
+    <div class="sb-header" onclick="toggleSection('sec-sci')">
+      <div class="sb-icon" style="background:rgba(26,122,74,0.2)">🔬</div>
+      <span class="sb-label">Sciences</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+
+      <div class="sb-group"><span class="sb-group-label">Physics</span></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 9')"><div class="sb-item-name">Grade 9 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 10')"><div class="sb-item-name">Grade 10 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 11')"><div class="sb-item-name">Grade 11 · Physics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Physics Grade 12')"><div class="sb-item-name">Grade 12 · Physics <span class="cs-pill">SOON</span></div></div>
+
+      <div class="sb-group"><span class="sb-group-label">Chemistry</span></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 9')"><div class="sb-item-name">Grade 9 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 10')"><div class="sb-item-name">Grade 10 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 11')"><div class="sb-item-name">Grade 11 · Chemistry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Chemistry Grade 12')"><div class="sb-item-name">Grade 12 · Chemistry <span class="cs-pill">SOON</span></div></div>
+
+      <div class="sb-group"><span class="sb-group-label">Biology</span></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 9')"><div class="sb-item-name">Grade 9 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 10')"><div class="sb-item-name">Grade 10 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 11')"><div class="sb-item-name">Grade 11 · Biology <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Biology Grade 12')"><div class="sb-item-name">Grade 12 · Biology <span class="cs-pill">SOON</span></div></div>
+
+    </div>
+  </div>
+
+  <!-- UNIVERSITY -->
+  <div class="sb-section" id="sec-uni">
+    <div class="sb-header" onclick="toggleSection('sec-uni')">
+      <div class="sb-icon" style="background:rgba(201,168,76,0.2)">🎓</div>
+      <span class="sb-label">University</span>
+      <span class="sb-chev">▶</span>
+    </div>
+    <div class="sb-items">
+
+      <div class="sb-group"><span class="sb-group-label">Calculus</span></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 101')"><div class="sb-item-name">Calculus 101 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 102')"><div class="sb-item-name">Calculus 102 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 103')"><div class="sb-item-name">Calculus 103 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Calculus 104')"><div class="sb-item-name">Calculus 104 <span class="cs-pill">SOON</span></div></div>
+
+      <div class="sb-group"><span class="sb-group-label">Algebra</span></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 101')"><div class="sb-item-name">Algebra 101 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 102')"><div class="sb-item-name">Algebra 102 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 103')"><div class="sb-item-name">Algebra 103 <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Algebra 104')"><div class="sb-item-name">Algebra 104 <span class="cs-pill">SOON</span></div></div>
+
+      <div class="sb-group"><span class="sb-group-label">Advanced</span></div>
+      <div class="sb-item coming" onclick="goCS('Probability and Statistics')"><div class="sb-item-name">Probability &amp; Statistics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Stochastics')"><div class="sb-item-name">Stochastics <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Complex Analysis')"><div class="sb-item-name">Complex Analysis <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Geometry')"><div class="sb-item-name">Geometry <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Hypothesis Testing')"><div class="sb-item-name">Hypothesis Testing <span class="cs-pill">SOON</span></div></div>
+      <div class="sb-item coming" onclick="goCS('Basic Mathematics')"><div class="sb-item-name">Basic Mathematics <span class="cs-pill">SOON</span></div></div>
+
+    </div>
+  </div>
+
+</aside>
+
+<!-- ══════════════════════════════════════
+     MAIN
+══════════════════════════════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">© BaileAndrea · Est. 2025</div>
+    <h1>Where Knowledge Finds Its <em>Voice.</em></h1>
+    <p>
+      A comprehensive academic platform covering Grade 1 through Grade 12,
+      and University-level Mathematics, Physics, Chemistry and Biology.
+      Detailed notes, worked examples, calculations and student activities —
+      all in one protected space.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="window.location.href='topic.html?subject=g1-math'">
+        Start Learning
+      </button>
+      <button class="btn-secondary" onclick="openModal('register')">
+        Create Free Account
+      </button>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-number">12</span>
+      <span class="stat-label">Grade Levels</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5+</span>
+      <span class="stat-label">Subjects</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">200+</span>
+      <span class="stat-label">Topics Planned</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Activities</span>
+    </div>
+  </div>
+
+  <!-- GRADE SCHOOL SECTION -->
+  <section class="home-section">
+    <div class="hs-title">Grade School Mathematics</div>
+    <div class="hs-sub">Grades 1 through 12 — building strong mathematical foundations, step by step</div>
+    <div class="cards-grid">
+
+      <div class="card" onclick="window.location.href='topic.html?subject=g1-math'">
+        <div class="card-icon">🔢</div>
+        <div class="card-title">Grade 1 Mathematics</div>
+        <div class="card-desc">Numbers, counting, ordering, comparison and introduction to shapes.</div>
+        <div class="card-footer">
+          <span class="card-count">Topic 1 available</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 2 Mathematics')">
+        <div class="card-icon">➕</div>
+        <div class="card-title">Grade 2 Mathematics</div>
+        <div class="card-desc">Two-digit numbers, addition with carrying, subtraction and shapes.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 3 Mathematics')">
+        <div class="card-icon">✖️</div>
+        <div class="card-title">Grade 3 Mathematics</div>
+        <div class="card-desc">Multiplication, division, time, measurement and patterns.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 4 Mathematics')">
+        <div class="card-icon">📐</div>
+        <div class="card-title">Grade 4 Mathematics</div>
+        <div class="card-desc">Fractions, decimals, area, perimeter and geometry basics.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 5 Mathematics')">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Grade 5 Mathematics</div>
+        <div class="card-desc">Percentages, ratios, data interpretation and graphs.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 6 Mathematics')">
+        <div class="card-icon">🔣</div>
+        <div class="card-title">Grade 6 Mathematics</div>
+        <div class="card-desc">Algebra introduction, probability, statistics and LCM/GCF.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 7 Mathematics')">
+        <div class="card-icon">📏</div>
+        <div class="card-title">Grade 7 Mathematics</div>
+        <div class="card-desc">Integers, rational numbers, equations and coordinate geometry.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 8 Mathematics')">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Grade 8 Mathematics</div>
+        <div class="card-desc">Linear equations, systems, Pythagorean theorem and functions.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 9 Mathematics')">
+        <div class="card-icon">🔺</div>
+        <div class="card-title">Grade 9 Mathematics</div>
+        <div class="card-desc">Quadratics, polynomials, trigonometry and geometric proofs.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 10 Mathematics')">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Grade 10 Mathematics</div>
+        <div class="card-desc">Advanced algebra, logarithms, sequences and series.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 11 Mathematics')">
+        <div class="card-icon">∑</div>
+        <div class="card-title">Grade 11 Mathematics</div>
+        <div class="card-desc">Pre-calculus, vectors, matrices and advanced trigonometry.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Grade 12 Mathematics')">
+        <div class="card-icon">∫</div>
+        <div class="card-title">Grade 12 Mathematics</div>
+        <div class="card-desc">Introduction to calculus, limits, derivatives and statistics.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCIENCES SECTION -->
+  <section class="home-section alt">
+    <div class="hs-title">Sciences — Grades 9 to 12</div>
+    <div class="hs-sub">Physics, Chemistry and Biology — comprehensive, detailed and examination-ready</div>
+    <div class="cards-grid">
+
+      <div class="card cs" onclick="goCS('Physics Grade 9 to 12')">
+        <div class="card-icon">⚛️</div>
+        <div class="card-title">Physics</div>
+        <div class="card-desc">Mechanics, waves, electricity, thermodynamics, optics and modern physics.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Chemistry Grade 9 to 12')">
+        <div class="card-icon">🧪</div>
+        <div class="card-title">Chemistry</div>
+        <div class="card-desc">Atomic structure, bonding, reactions, stoichiometry and organic chemistry.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Biology Grade 9 to 12')">
+        <div class="card-icon">🧬</div>
+        <div class="card-title">Biology</div>
+        <div class="card-desc">Cell biology, genetics, ecology, human body systems and evolution.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- UNIVERSITY SECTION -->
+  <section class="home-section">
+    <div class="hs-title">University Mathematics</div>
+    <div class="hs-sub">Rigorous, university-level content built for serious learners</div>
+    <div class="cards-grid">
+
+      <div class="card cs" onclick="goCS('Calculus 101 to 104')">
+        <div class="card-icon">∫</div>
+        <div class="card-title">Calculus 101 – 104</div>
+        <div class="card-desc">Limits, derivatives, integrals, series and multivariable calculus.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Algebra 101 to 104')">
+        <div class="card-icon">𝑥</div>
+        <div class="card-title">Algebra 101 – 104</div>
+        <div class="card-desc">Linear algebra, matrices, vector spaces and eigenvalues.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Probability and Statistics')">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Probability &amp; Statistics</div>
+        <div class="card-desc">Distributions, inference, regression and hypothesis testing.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Complex Analysis')">
+        <div class="card-icon">ℂ</div>
+        <div class="card-title">Complex Analysis</div>
+        <div class="card-desc">Complex numbers, analytic functions and contour integration.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Stochastics')">
+        <div class="card-icon">🎲</div>
+        <div class="card-title">Stochastics</div>
+        <div class="card-desc">Markov chains, random processes and stochastic calculus.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Geometry')">
+        <div class="card-icon">△</div>
+        <div class="card-title">Geometry</div>
+        <div class="card-desc">Euclidean and non-Euclidean geometry, transformations and proofs.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Hypothesis Testing')">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Hypothesis Testing</div>
+        <div class="card-desc">Null/alternative hypotheses, t-tests, chi-square and p-values.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+      <div class="card cs" onclick="goCS('Basic Mathematics')">
+        <div class="card-icon">🔢</div>
+        <div class="card-title">Basic Mathematics</div>
+        <div class="card-desc">Foundational university math — sets, logic, number theory and proofs.</div>
+        <div class="card-footer"><span class="cs-badge">Coming Soon</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-copy">
+      © 2025 <strong>BaileAndrea</strong> · School Voice · All Rights Reserved ·
+      Unauthorized copying, reproduction or printing is strictly prohibited.
+    </div>
+    <div class="footer-links">
+      <span class="footer-link">Terms of Use</span>
+      <span class="footer-link">Privacy Policy</span>
+      <span class="footer-link">Copyright Notice</span>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ══════════════════════════════════════
+     AUTH MODAL
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div class="modal-logo">
+      <div class="modal-lmark">SV</div>
+      <div class="modal-ltext">School Voice</div>
+    </div>
+
+    <!-- Login -->
+    <div id="m-login">
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to access all topics across every grade and subject.</p>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" />
+      </div>
+      <button class="btn-primary" onclick="handleLogin()">Sign In</button>
+      <div class="divider" style="margin-top:18px">or</div>
+      <div class="modal-switch">
+        No account? <a onclick="switchModal('register')">Create one free</a>
+      </div>
+    </div>
+
+    <!-- Register -->
+    <div id="m-register" style="display:none">
+      <h2>Get started free</h2>
+      <p class="sub">Create your account to unlock the full School Voice library.</p>
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name" />
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" placeholder="Create a password" />
+      </div>
+      <button class="btn-primary" onclick="handleLogin()">Create Account</button>
+      <div class="divider" style="margin-top:18px">or</div>
+      <div class="modal-switch">
+        Already have an account? <a onclick="switchModal('login')">Sign in</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script src="protection.js"></script>
+<script src="auth.js"></script>
+<script src="sidebar.js"></script>
+
+<script>
+  /* Redirect coming-soon clicks to coming-soon page */
+  function goCS(name) {
+    window.location.href = 'coming-soon.html?subject=' + encodeURIComponent(name);
+  }
+</script>
+
+</body>
+</html>
